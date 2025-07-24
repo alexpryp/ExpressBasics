@@ -1,6 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import router from "./router.js";
+import fileUpload from 'express-fileupload';
 
 const PORT = 5000;
 const DB_URL = 'mongodb+srv://alexpryp:IzRV8rRflu81pwVc@cluster0.ymrdebj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
@@ -8,6 +9,8 @@ const DB_URL = 'mongodb+srv://alexpryp:IzRV8rRflu81pwVc@cluster0.ymrdebj.mongodb
 const app = express();
 
 app.use(express.json());
+app.use(express.static('static'));
+app.use(fileUpload({}));
 app.use('/api', router);
 
 // app.post('/', );
